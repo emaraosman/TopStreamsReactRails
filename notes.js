@@ -12,3 +12,8 @@ TwitchStream.find_or_initialize_by(:streamer_id => 51496027).update_attributes!(
 
 //Test of checking and not updating certain fields:
 TwitchStream.find_or_initialize_by(:streamer_id => 100000, :channel_name => "thecaveman114", :url => "https://www.twitch.tv/thecaveman114").update_attributes!(:viewers => 22892, :followers=>100, :total_views => 100, :game => "PUBG", :logo => "newlogo", :likes => 10)
+
+
+data['streams'].each do |child|
+    puts child
+end
