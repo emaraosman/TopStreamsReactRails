@@ -1,7 +1,7 @@
 class TwitchstreamsController < ApplicationController
   def index
     twitchstreams = TwitchStream.all
-    render json: { twtichstreams: twitchstreams }
+    render json: { twitchstreams: twitchstreams }
   end
-  
+
 end
