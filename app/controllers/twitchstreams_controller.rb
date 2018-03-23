@@ -1,8 +1,11 @@
 class TwitchstreamsController < ApplicationController
 
   def index
-    twitchstreams = TwitchStream.all
-    render json: { twitchstreams: twitchstreams }
+    td = TwitchStream.get_data()
+
+    render json: {twitchdata: td}
+    # twitchstreams = TwitchStream.all
+
   end
 
   # def index
@@ -10,5 +13,6 @@ class TwitchstreamsController < ApplicationController
   #     headers: {'Client-ID': ENV['client_id'], 'Client-Secret': ENV['client_secret']})
   #   render json: response
   # end
+
 
 end
