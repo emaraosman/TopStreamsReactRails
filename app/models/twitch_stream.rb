@@ -19,7 +19,7 @@ class TwitchStream < ApplicationRecord
       TwitchStream.find_or_initialize_by(:streamer_id => streamer_id, :channel_name => channel_name, :url => url).update_attributes!(:viewers => viewers, :followers => followers, :total_views => total_views, :game => game, :logo => logo)
       end
 
-      return data
+      return data #keep this return at the bottom to allow the data to be entered into db first
 
     end
 
