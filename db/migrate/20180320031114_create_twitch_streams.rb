@@ -10,6 +10,7 @@ class CreateTwitchStreams < ActiveRecord::Migration[5.1]
       t.string :url
       t.string :logo
       t.bigint :likes
+      t.bigint :dislikes
       t.timestamps
     end
   end

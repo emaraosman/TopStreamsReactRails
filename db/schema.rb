@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20180320031114) do
     t.string "url"
     t.string "logo"
     t.bigint "likes"
+    t.bigint "dislikes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
