@@ -60,23 +60,11 @@ logo = data['streams'][0]['channel']['logo']
   TwitchStream.find_or_initialize_by(:streamer_id => streamer_id, :channel_name => channel_name, :url => url).update_attributes!(:viewers => viewers, :followers => followers, :total_views => total_views, :game => game, :logo => logo)
 end
 
+//Original youtube api call:
+https://www.googleapis.com/youtube/v3/search?part=snippet&eventType=live&type=video&regionCode=US&order=viewcount&maxResults=10&key=${process.env.ytkey}
 
+//Youtube api call to get only videoId's for 2nd api call:
+https://www.googleapis.com/youtube/v3/search?&key=${process.env.ytkey}&eventType=live&type=video&maxResults=10&order=viewcount&fields=items(id,snippet(channelId,title,channelTitle,%20thumbnails(medium)))&part=snippet
 
-
-//   class TwitchData
-//     def get_data
-//       data = JSON.parse(RestClient::Request.execute(method: :get, url: 'https://api.twitch.tv/kraken/streams/?limit=10',headers: {'Client-ID': ENV['client_id'], 'Client-Secret': ENV['client_secret']}))
-//
-//       3.times do |count|
-//         streamer_id = data['streams'][count]['channel']['_id']
-//         channel_name = data['streams'][count]['channel']['display_name']
-//         viewers = data['streams'][count]['viewers']
-//         followers = data['streams'][count]['channel']['followers']
-//         total_views = data['streams'][count]['channel']['views']
-//         game = data['streams'][count]['channel']['game']
-//         url = data['streams'][count]['channel']['url']
-//         logo = data['streams'][count]['channel']['logo']
-//
-//       TwitchStream.find_or_initialize_by(:streamer_id => streamer_id, :channel_name => channel_name, :url => url).update_attributes!(:viewers => viewers, :followers => followers, :total_views => total_views, :game => game, :logo => logo)
-//       end
-//     end
+//Youtube api call to retrieve view count of each youtube stream.
+https://www.googleapis.com/youtube/v3/videos/?id=AkWZ81z-mzg&fields=items(id,snippet(channelId,title,channelTitle,thumbnails(medium)),statistics)&part=snippet,statistics&${process.env.ytkey}

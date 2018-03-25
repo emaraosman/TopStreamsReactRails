@@ -1,0 +1,2 @@
+class YoutubeStream < ApplicationRecord
+end
