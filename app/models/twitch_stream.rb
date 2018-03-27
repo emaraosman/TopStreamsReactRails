@@ -1,10 +1,7 @@
 class TwitchStream < ApplicationRecord
 
-
     def self.get_data
       data = JSON.parse(RestClient::Request.execute(method: :get, url: 'https://api.twitch.tv/kraken/streams/?limit=10',headers: {'Client-ID': ENV['client_id'], 'Client-Secret': ENV['client_secret']}))
-
-
 
       7.times do |count|
         streamer_id = data['streams'][count]['channel']['_id']
